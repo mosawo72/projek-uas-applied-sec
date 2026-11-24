@@ -1,0 +1,6 @@
+data/
+database/*.sqlite
+database/*.sqlite-shm
+database/*.sqlite-wal
+.DS_Store
+Thumbs.db

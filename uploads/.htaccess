@@ -1,0 +1,8 @@
+Deny from all
+<FilesMatch "\.(jpg|jpeg|png|webp|gif)$">
+    Allow from all
+</FilesMatch>
+# Mencegah eksekusi skrip berbahaya di folder upload (OWASP A08)
+RemoveHandler .php .phtml .php3 .php4 .php5 .php7 .php8
+RemoveType .php .phtml .php3 .php4 .php5 .php7 .php8
+php_flag engine off
