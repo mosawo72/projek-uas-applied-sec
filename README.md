@@ -1,12 +1,12 @@
-# Torta Shop — Toko Penjualan & Pembelian Patiseri Kue
+# Torta Shop — Toko Penjualan dan Pembelian Kue
 
 Aplikasi web e-commerce dan manajemen toko kue yang dibangun menggunakan **PHP Native (Modern PDO)** dengan mematuhi **Guideline OWASP Top 10**.
 
 ---
 
-## 🚀 Panduan Menjalankan Aplikasi
+## Panduan Menjalankan Aplikasi
 
-Aplikasi menggunakan server bawaan PHP (*Built-in Web Server*):
+Aplikasi menggunakan server bawaan PHP (Built-in Web Server):
 
 1. Pastikan Anda berada di direktori proyek ini.
 2. Jalankan perintah:
@@ -14,69 +14,71 @@ Aplikasi menggunakan server bawaan PHP (*Built-in Web Server*):
    C:\xampp\php\php.exe -S 127.0.0.1:8000
    ```
    *(atau cukup `php -S 127.0.0.1:8000` jika PHP sudah terdaftar di PATH lingkungan Anda).*
-3. Buka browser dan akses: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+3. Buka browser dan akses: http://127.0.0.1:8000
 
 ---
 
-## 🔑 Akun Login Bawaan (Demo)
+## Akun Login Bawaan (Demo)
 
 | Role / Peran | Alamat Email | Kata Sandi | Deskripsi Hak Akses |
 | :--- | :--- | :--- | :--- |
-| **Administrator** | `admin@torta.id` | `Admin12345678!` | Akses Penuh: Master User (Ubah Role), Master Barang, Kategori, PO Pemasok, Laporan PDF. |
-| **Pegawai** | `pegawai@torta.id` | `Pegawai12345678!` | Akses Toko: Master Barang, Master Kategori, Pembelian/PO, Konfirmasi Pembayaran Kasir, Laporan PDF. |
-| **Customer** | `customer@torta.id` | `Customer12345678!` | Akses Pelanggan: Belanja Katalog, Keranjang, Checkout Pemesanan, Riwayat & Batalkan Pesanan. |
+| **Administrator** | `admin@torta.id` | `Admin12345678!` | Akses Penuh: Master User (Ubah Role), Tambah Barang, Tambah Kategori, PO Pemasok, Laporan PDF. |
+| **Pegawai** | `pegawai@torta.id` | `Pegawai12345678!` | Akses Toko: Tambah Barang, Tambah Kategori, Pembelian/PO, Konfirmasi Pembayaran Kasir, Laporan PDF. |
+| **Customer** | `customer@torta.id` | `Customer12345678!` | Akses Pelanggan: Belanja Katalog, Keranjang, Checkout Pemesanan, Riwayat dan Batalkan Pesanan. |
 
-*(Anda juga dapat mendaftarkan akun baru langsung via menu **Daftar** di pojok kanan atas).*
+*(Anda juga dapat mendaftarkan akun baru langsung via menu Daftar di pojok kanan atas).*
 
 ---
 
-## 📂 Struktur Folder Proyek
+## Struktur Folder Proyek
 
 ```text
-📁 d:\Projek applied security\
-├── 📁 admin/                         # Panel Khusus Administrator & Pegawai
-│   ├── index.php                     # Dashboard & Operasional Toko
-│   ├── products.php                  # Master Barang (CRUD & Upload Foto)
-│   ├── categories.php                # Master Kategori
-│   ├── users.php                     # Master User & Pengaturan Role (Admin Only)
-│   ├── purchases.php                 # Pembelian ke Pemasok / Supplier (PO)
-│   └── report.php                    # Laporan Penjualan (Cetak PDF)
-├── 📁 assets/                        # CSS, JS, Gambar Statis
-│   ├── css/style.css                 # Desain modern & media print cetak PDF
-│   ├── js/main.js                    # Skrip interaksi UI
-│   └── img/                          # Aset gambar kue dan banner
-├── 📁 database/                      # Skema Database & Migrasi
-│   ├── schema.sql                    # Skema SQLite / SQL
-│   └── torta.sqlite                  # Berkas database runtime SQLite
-├── 📁 docs/                          # Folder Catatan & Dokumentasi
-├── 📁 includes/                      # Modul & Fungsi Inti (Security & DB)
-│   ├── db.php                        # Koneksi Database PDO (Anti SQLi)
-│   ├── auth.php                      # RBAC, Otentikasi & Verifikasi Role
-│   ├── security.php                  # CSRF, XSS filter, Brute-Force Rate Limiter
-│   ├── header.php                    # Layout Header & Navbar Navigasi
-│   └── footer.php                    # Layout Footer
-├── 📁 uploads/                       # Folder Upload Foto Barang & Avatar
-│   └── .htaccess                     # Proteksi pencegahan eksekusi PHP (A08)
-├── cart.php                          # Keranjang Belanja
-├── checkout.php                      # Checkout & Pemesanan Kue
-├── config.php                        # Konfigurasi Aplikasi & Session Security
-├── debug.php                         # Ringkasan Status Server & Indikator OWASP
-├── index.php                         # Beranda & Katalog Kue Unggulan
-├── login.php                         # Halaman Masuk
-├── logout.php                        # Keluar Sesi & Penghapusan Cookie
-├── orders.php                        # Riwayat Pesanan Customer & Pembatalan
-├── product_detail.php                # Rincian Produk & Masuk Keranjang
-├── products.php                      # Katalog Lengkap & Filter Kategori
-├── profile.php                       # Profil Pengguna & Edit Info
-├── register.php                      # Pendaftaran Akun (Password Policy >= 12 char)
-├── search.php                        # Pencarian Barang Bebas SQLi
-├── upload_avatar.php                 # Handler Unggah Foto Profil
-└── README.md                         # Dokumentasi Proyek
+d:\Projek applied security\
+|-- admin/                            # Panel Khusus Administrator dan Pegawai
+|   |-- categories.php                # Tambah Kategori
+|   |-- export_pdf.php                # Download Laporan PDF (FPDF Library)
+|   |-- index.php                     # Dashboard dan Operasional Toko
+|   |-- products.php                  # Tambah Barang (CRUD dan Upload Foto)
+|   |-- purchases.php                 # Pembelian ke Pemasok / Supplier (PO)
+|   |-- report.php                    # Laporan Penjualan (Cetak PDF)
+|   `-- users.php                     # Master User dan Pengaturan Role (Admin Only)
+|-- assets/                           # CSS, JS, Gambar Statis
+|   |-- css/style.css                 # Desain modern dan media print cetak PDF
+|   |-- js/main.js                    # Skrip interaksi UI
+|   `-- img/                          # Aset gambar kue dan banner
+|-- database/                         # Skema Database dan Migrasi
+|   |-- schema.sql                    # Skema SQLite / SQL
+|   `-- torta.sqlite                  # Berkas database runtime SQLite
+|-- docs/                             # Folder Catatan dan Dokumentasi
+|-- includes/                         # Modul dan Fungsi Inti (Security dan DB)
+|   |-- auth.php                      # RBAC, Otentikasi dan Verifikasi Role
+|   |-- db.php                        # Koneksi Database PDO (Anti SQLi)
+|   |-- footer.php                    # Layout Footer
+|   |-- fpdf/                         # Library Resmi FPDF untuk cetak file PDF
+|   |-- header.php                    # Layout Header dan Navbar Navigasi
+|   `-- security.php                  # CSRF, XSS filter, Brute-Force Rate Limiter
+|-- uploads/                          # Folder Upload Foto Barang dan Avatar
+|   `-- .htaccess                     # Proteksi pencegahan eksekusi PHP (A08)
+|-- cart.php                          # Keranjang Belanja
+|-- checkout.php                      # Checkout dan Pemesanan Kue
+|-- config.php                        # Konfigurasi Aplikasi dan Session Security
+|-- debug.php                         # Ringkasan Status Server dan Indikator OWASP
+|-- index.php                         # Beranda dan Katalog Kue Unggulan
+|-- login.php                         # Halaman Masuk
+|-- logout.php                        # Keluar Sesi dan Penghapusan Cookie
+|-- orders.php                        # Riwayat Pesanan Customer dan Pembatalan
+|-- product_detail.php                # Rincian Produk dan Masuk Keranjang
+|-- products.php                      # Katalog Lengkap dan Filter Kategori
+|-- profile.php                       # Profil Pengguna dan Edit Info
+|-- register.php                      # Pendaftaran Akun (Password Policy >= 12 char)
+|-- search.php                        # Pencarian Barang Bebas SQLi
+|-- upload_avatar.php                 # Handler Unggah Foto Profil
+`-- README.md                         # Dokumentasi Proyek
 ```
 
 ---
 
-## 🛡️ Matriks Kepatuhan OWASP Top 10
+## Matriks Kepatuhan OWASP Top 10
 
 1. **A01: Broken Access Control:**
    - Role-Based Access Control (RBAC) ketat via `require_admin()` dan `require_staff()` di folder `/admin/`.
@@ -103,7 +105,7 @@ Aplikasi menggunakan server bawaan PHP (*Built-in Web Server*):
 
 7. **A08: Software and Data Integrity Failures (File Upload):**
    - File upload divalidasi MIME type asli menggunakan `finfo` dan `getimagesize()` (bukan sekadar membaca ekstensi nama file).
-   - Folder `/uploads` diproteksi dengan `.htaccess` agar berkas skrip PHP tidak dapat dieksekusi langsung (*Anti Web Shell*).
+   - Folder `/uploads` diproteksi dengan `.htaccess` agar berkas skrip PHP tidak dapat dieksekusi langsung (Anti Web Shell).
 
 8. **A09: Security Logging and Monitoring Failures:**
    - Semua event penting (login gagal, login berhasil, registrasi, pergantian role, pembuatan PO, pembatalan order) dicatat ke tabel `audit_logs`.
